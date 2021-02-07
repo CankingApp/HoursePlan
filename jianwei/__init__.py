@@ -56,4 +56,4 @@ with open('day_net_signatory.csv', 'a+') as csv_file:
     print(str(row_value))
     writer.writerow(row_value)
 
-print('处理完成一条×××××××××××××××××××××××××××')
+print('处理完成')
