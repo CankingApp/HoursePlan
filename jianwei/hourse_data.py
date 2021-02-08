@@ -59,7 +59,7 @@ with open(_FILE_NAME_SAVE, 'a+') as csv_file:
         row_value[fieldnames[index]] = (find.text.strip())
         index = index + 1
 
-    for tr in tables[1].findAll('tr'):
+    for tr in tables[3].findAll('tr'):
         tds = tr.findAll('td')
         try:
             find = tds[1]
