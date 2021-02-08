@@ -1,0 +1,1 @@
+print(str('发' in 'Fw散发'))
