@@ -23,28 +23,38 @@ print(time_day)
 tables = target_table[1].find_all('table')
 
 try:
-    len = os.path.getsize(_FILE_NAME_SAVE)
+    file_len = os.path.getsize(_FILE_NAME_SAVE)
 except:
-    len = 0
+    file_len = 0
 
 
 
 def writeFile():
+    has_get = False
+
+    with open(_FILE_NAME_SAVE, 'rb+') as f:
+        off = -100
+        while True:
+            f.seek(off, 2)
+            lines = f.readlines()
+            if len(lines) >= 2:
+                last_line = lines[-1]
+                if time_day in str(last_line):
+                    has_get = True
+                break
+            off *= 2
+
+
     with open(_FILE_NAME_SAVE, 'a+') as csv_file:
         fieldnames = ['时间戳', '日期', '可售房源套数', '可售房源面积(m2)', '可售住宅套数', '可售住宅面积(m2)', '新发布房源套数',
                       '新发布房源面积(m2)', '新发布住宅套数', '新发布住宅面积(m2)', '网上签约套数',
                       '网上签约面积(㎡)', '住宅签约套数', '住宅签约面积(㎡)']
-        has_get = False
-        for line in csv_file:
-            if time_day in line:
-                has_get = True
-                break
-        if not has_get:
-            print("发现已获取该天数据："+time_day)
+        if has_get:
+            print("发现已获取该天数据：" + time_day)
             return None
 
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-        if len < 1:
+        if file_len < 1:
             writer.writeheader()
         print("处理new Table")
         now = int(time.time())
@@ -78,6 +88,7 @@ def writeFile():
             index = index + 1
         print(str(row_value))
         writer.writerow(row_value)
+
 
 writeFile()
 
