@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib import font_manager
+from matplotlib import font_manager, ticker
 
 my_font = font_manager.FontProperties(fname='../res/light.ttf')
 file = open("../jianwei/day_net_signatory.csv", 'r')
@@ -35,6 +35,8 @@ ax.set_ylabel(u'套数(套)', size=10, fontproperties=my_font)  # 设置y轴名�
 ax2.set_ylabel(u'面积(㎡)', size=10, fontproperties=my_font)  # 设置y轴名为“y轴名”
 ax2.legend(loc='upper right', prop=my_font)
 ax.yaxis.grid(True)
+ax.xaxis.set_major_locator(ticker.MultipleLocator(2))
+
 ax.legend(loc='upper left', prop=my_font)
 
 
@@ -55,5 +57,6 @@ print(str(xlist))
 # city_population.plot()
 
 # plt.annotate('单位:万人', xy=(15.5, 40000))
+plt.tight_layout()
 plt.savefig("day_signatory.png")
 plt.show()
