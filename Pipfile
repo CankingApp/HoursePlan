@@ -13,6 +13,7 @@ matplotlib = "*"
 pandas = "*"
 pyqt5 = "*"
 the = "*"
+pyecharts = "*"
 
 [requires]
 python_version = "*"
