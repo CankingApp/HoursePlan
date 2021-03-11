@@ -1,5 +1,7 @@
 import pyecharts.options as opts
 import pandas as pd
+from snapshot_phantomjs import snapshot
+from pyecharts.render import make_snapshot
 
 
 from pyecharts.charts import Line
@@ -44,9 +46,5 @@ ydata_3 = df.loc[:, "住宅签约套数"]
     )
     .render("day_signatory.html")
 )
-print(str(xdata))
-print("*************************************************************************")
 
-print(str(ydata_1))
-print("*************************************************************************")
-print(str(ydata_3))
+make_snapshot(snapshot,"day_signatory.html","day_signatory.jpeg")
