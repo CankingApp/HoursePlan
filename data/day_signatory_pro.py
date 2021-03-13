@@ -47,4 +47,4 @@ ydata_3 = df.loc[:, "住宅签约套数"]
     .render("day_signatory.html")
 )
 
-make_snapshot(snapshot,"day_signatory.html","../day_signatory.gif")
+make_snapshot(snapshot,"day_signatory.html","day_signatory.gif")
