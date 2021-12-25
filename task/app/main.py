@@ -4,9 +4,10 @@
 @Time : 2021/3/13
 @Author : Canking
 @File : day_task
-@Description : 
+@Description :
 """
 import json
+import os
 import time
 import requests
 from bs4 import BeautifulSoup
@@ -41,10 +42,10 @@ def get_day():
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/day')
 def get_day_signatory():
     return json.dumps(get_day(), ensure_ascii=False)
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
